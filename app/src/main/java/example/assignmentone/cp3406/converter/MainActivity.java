@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public void onButtonPress(View view){
         switch(view.getId()){
             case R.id.currencyButton:
-                Intent convertCurrency = new Intent(this, CurrencyActivity.class);
+                Intent convertCurrency = new Intent(this, ConvertCurrency.class);
                 startActivity(convertCurrency);
                 break;
 
