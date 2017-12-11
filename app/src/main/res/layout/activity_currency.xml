@@ -8,7 +8,7 @@
     android:columnCount="3"
     android:rowCount="5"
     android:padding="15dp"
-    tools:context="example.assignmentone.cp3406.converter.CurrencyActivity">
+    tools:context="example.assignmentone.cp3406.converter.CurrencyOptionsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
