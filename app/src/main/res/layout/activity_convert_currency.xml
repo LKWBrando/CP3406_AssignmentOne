@@ -20,9 +20,12 @@
             android:id="@+id/initialCurrency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter your value here!"
+            android:hint="Enter your value here"
             android:textSize="20sp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:layout_weight="1"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -35,7 +38,7 @@
                 android:id="@+id/initialCurrencyString"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Currency #1"
+                android:text="Choose a currency!"
                 android:layout_gravity="center"/>
             <Button
                 android:id="@+id/initialCurrencyButton"
@@ -63,9 +66,12 @@
             android:id="@+id/changedCurrency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter your value here!"
+            android:hint="Enter your value here"
             android:textSize="20sp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:inputType="numberDecimal"
+            android:imeOptions="actionDone"
+            android:layout_weight="1"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -78,7 +84,7 @@
                 android:id="@+id/changedCurrencyString"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Currency #2"
+                android:text="Choose a currency!"
                 android:layout_gravity="center"/>
             <Button
                 android:id="@+id/changedCurrencyButton"
@@ -119,7 +125,8 @@
             android:layout_height="wrap_content"
             android:text="Reset"
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:onClick="onButtonPress"/>
     </LinearLayout>
 
     <TextView
