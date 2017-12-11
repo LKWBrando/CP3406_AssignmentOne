@@ -121,4 +121,12 @@
             android:layout_gravity="center"
             android:layout_weight="1"/>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:textAlignment="textEnd"
+        android:textSize="10dp"
+        android:text="Values accurate as of 13 November 2017"/>
 </LinearLayout>

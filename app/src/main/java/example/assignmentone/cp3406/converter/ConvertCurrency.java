@@ -16,6 +16,8 @@ public class ConvertCurrency extends AppCompatActivity {
     EditText changedCurrency;
     TextView initialCurrencyString;
     TextView changedCurrencyString;
+    int initialCurrencyFactor;
+    int changedCurrencyFactor;
     SharedPreferences preferences;
 
     @Override
@@ -32,6 +34,10 @@ public class ConvertCurrency extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        //initialCurrencyFactor = preferences.getInt()
+        //changedCurrencyFactor = preferences.getInt()
+
         initialCurrency.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -39,6 +45,10 @@ public class ConvertCurrency extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                try{
+                    int value = Integer.parseInt(charSequence.toString());
+                }
+                catch(Exception e){}
             }
 
             @Override
@@ -65,16 +75,19 @@ public class ConvertCurrency extends AppCompatActivity {
     }
 
     public void onButtonPress(View view){
+        Intent returnToMenu = new Intent(this, MainActivity.class); //Intent for returning to the main menu
+        Intent goToCurrencyMenu = new Intent(this, CurrencyOptionsActivity.class); //Intent for switching to the currency options menu
         switch(view.getId()){
             case R.id.homeButton:
-                Intent returnToMenu = new Intent(this, MainActivity.class);
                 startActivity(returnToMenu);
                 break;
 
             case R.id.initialCurrencyButton:
+                startActivity(goToCurrencyMenu);
                 break;
 
             case R.id.changedCurrencyButton:
+                startActivity(goToCurrencyMenu);
                 break;
 
         }
