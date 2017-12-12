@@ -12,116 +12,135 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ConvertCurrency extends AppCompatActivity {
-    EditText initialCurrency;
-    EditText changedCurrency;
-    TextView initialCurrencyString;
-    TextView changedCurrencyString;
-    ImageView initialImage;
-    ImageView changedImage;
-    double userInput;
-    double userInputUsd;
-    double convertedResult;
-    SharedPreferences preferences;
+    EditText inputCurrency;
+    TextView convertedCurrency;
+    TextView inputCurrencyType;
+    TextView convertedCurrencyType;
+    TextView equalsMessage;
+    ImageView inputImage;
+    ImageView convertedImage;
+    double userInput; //used to store user input for calculations
+    double userInputUsd; //used in the conversion calculations
+    double convertedResult; //used in the conversion calculations
+    SharedPreferences preferences; //used to store and manage values based on user activity from current and other activities
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { //onCreate, creates all required objects
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_convert_currency);
-        initialCurrency = findViewById(R.id.initialCurrency);
-        changedCurrency = findViewById(R.id.changedCurrency);
-        initialCurrencyString = findViewById(R.id.initialCurrencyString);
-        changedCurrencyString = findViewById(R.id.changedCurrencyString);
-        initialImage = findViewById(R.id.initialImage);
-        changedImage = findViewById(R.id.changedImage);
+        setTitle("Currency Converter");
+        inputCurrency = findViewById(R.id.inputCurrency);
+        convertedCurrency = findViewById(R.id.convertedCurrency);
+        inputCurrencyType = findViewById(R.id.inputCurrencyType);
+        convertedCurrencyType = findViewById(R.id.convertedCurrencyType);
+        equalsMessage = findViewById(R.id.equalsMessage);
+        inputImage = findViewById(R.id.inputImage);
+        convertedImage = findViewById(R.id.convertedImage);
         preferences = getSharedPreferences("Settings" , MODE_PRIVATE);
     }
 
     @Override
-    protected void onStart(){
+    protected void onStart(){ //onStart
         super.onStart();
-        converterMain();
+        currencyConverterMain();
     }
 
-    protected void onResume(){
+    protected void onResume(){ //onResume
         super.onResume();
-        converterMain();
+        currencyConverterMain();
     }
 
-    public void onButtonPress(View view){
+    /*Main method run onStart and onResume
+    Sets selected preferences, string values, and images, as well as converting user input according to selected currency types*/
+    public void currencyConverterMain(){
+        //Checks SharedPreferences for user input on the currency type, then displays the corresponding value
+        inputCurrencyType.setText(preferences.getString("Option1", "Choose a currency!"));
+        convertedCurrencyType.setText(preferences.getString("Option2", "Choose a currency!"));
+        inputCurrency.setText(preferences.getString("initialUserInput", null)); //Saves the user's input between switching activities.
+
+        String imageFileName;
+        int resId;
+        //sets image of currency type according to current selected user input
+        imageFileName = inputCurrencyType.getText().toString();
+        if(imageFileName.equals("Choose a currency!")){
+            inputImage.setImageResource(R.drawable.dollar_sign);
+        }else{
+        resId = getResources().getIdentifier(imageFileName, "drawable", getPackageName());
+        inputImage.setImageResource(resId);}
+
+        //sets image of currency type according to current selected user input
+        imageFileName = convertedCurrencyType.getText().toString();
+        if(imageFileName.equals("Choose a currency!")){
+            convertedImage.setImageResource(R.drawable.dollar_sign);
+        }else{
+        resId = getResources().getIdentifier(imageFileName, "drawable", getPackageName());
+        convertedImage.setImageResource(resId);}
+
+        inputCurrency.addTextChangedListener(new TextWatcher() { //Listener for EditText inputCurrency
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                try{
+                    preferences.edit().putString("initialUserInput", charSequence.toString()).apply(); //to save the value when returning from choosing currency type
+                    userInput = Double.parseDouble(charSequence.toString()); //converts user input into EditText to string
+
+                    //IF/ELSE statement to check if both currency types (initial and converted) have been selected, and if so, proceeds with the conversion
+                    if(!inputCurrencyType.getText().toString().equals("Choose a currency!")  && !convertedCurrencyType.getText().toString().equals("Choose a currency!")){
+                        convertUSD(inputCurrencyType.getText().toString(), userInput); //Calling conversion methods
+                        convertActual(convertedCurrencyType.getText().toString(), userInputUsd); //Calling conversion methods
+                        convertedCurrency.setText(Double.toString(convertedResult));
+                        equalsMessage.setText("Equates to...");
+                    }
+                }
+                catch(Exception e){} //Throws exception
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+   }
+
+    public void onButtonPress(View view){   //Method called for android:onClick in the activity_convert_currency.xml file
         Intent returnToMenu = new Intent(this, MainActivity.class); //Intent for returning to the main menu
-        Intent goToCurrencyMenu = new Intent(this, CurrencyOptionsActivity.class); //Intent for switching to the currency options menu
+        Intent goToCurrencyMenu = new Intent(this, CurrencyOptionsActivity.class);  //Intent for switching to the currency options menu
         switch(view.getId()){
-            case R.id.homeButton:
+            case R.id.homeButton:   //Home button returns to the initial screen
                 startActivity(returnToMenu);
                 break;
 
-            case R.id.initialCurrencyButton:
+            case R.id.initialCurrencyButton:    //Starts activity that allows users to choose currency type
                 preferences.edit().putBoolean("currencyBoolean", true).apply();
                 startActivity(goToCurrencyMenu);
                 break;
 
-            case R.id.changedCurrencyButton:
+            case R.id.convertedCurrencyButton:    //Starts activity that allows users to choose currency type
                 preferences.edit().putBoolean("currencyBoolean", false).apply();
                 startActivity(goToCurrencyMenu);
                 break;
 
-            case R.id.resetButton:
-                initialCurrencyString.setText("Choose a currency!");
-                changedCurrencyString.setText("Choose a currency!");
+            case R.id.resetButton:  //Resets all variables and stored preferences
+                inputCurrencyType.setText("Choose a currency!");
+                convertedCurrencyType.setText("Choose a currency!");
                 preferences.edit().putString("Option1", null).apply();
                 preferences.edit().putString("Option2", null).apply();
-                initialImage.setImageResource(R.drawable.dollar_sign);
-                changedImage.setImageResource(R.drawable.dollar_sign);
-                initialCurrency.setText("");
-                changedCurrency.setText("");
+                inputImage.setImageResource(R.drawable.dollar_sign);
+                convertedImage.setImageResource(R.drawable.dollar_sign);
+                inputCurrency.setText("");
+                convertedCurrency.setText("The result appear here!");
+                equalsMessage.setText("");
                 userInput = 0;
                 userInputUsd = 0;
                 convertedResult = 0;
         }
     }
 
-   public void converterMain(){
-       String imageFileName;
-       int resId;
-       initialCurrencyString.setText(preferences.getString("Option1", "Choose a currency!"));
-       changedCurrencyString.setText(preferences.getString("Option2", "Choose a currency!"));
-       initialCurrency.setText(preferences.getString("initialUserInput", null));
 
-       //if(!initialCurrencyString.getText().toString().equals("Choose a currency!")){
-       imageFileName = initialCurrencyString.getText().toString();
-       resId = getResources().getIdentifier(imageFileName, "drawable", getPackageName());
-       initialImage.setImageResource(resId);
-
-       imageFileName = changedCurrencyString.getText().toString();
-       resId = getResources().getIdentifier(imageFileName, "drawable", getPackageName());
-       changedImage.setImageResource(resId);
-
-       initialCurrency.addTextChangedListener(new TextWatcher() {
-           @Override
-           public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-           }
-
-           @Override
-           public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-               try{
-                   preferences.edit().putString("initialUserInput", charSequence.toString()).apply(); //to save the value when returning from choosing currency type
-                   userInput = Double.parseDouble(charSequence.toString());
-                   if(!initialCurrencyString.getText().toString().equals("Choose a currency!")  && !changedCurrencyString.getText().toString().equals("Choose a currency!")){
-                       convertUSD(initialCurrencyString.getText().toString(), userInput);
-                       convertActual(changedCurrencyString.getText().toString(), userInputUsd);
-                       changedCurrency.setText(Double.toString(convertedResult));
-                   }
-               }
-               catch(Exception e){}
-           }
-
-           @Override
-           public void afterTextChanged(Editable editable) {
-           }
-       });
-   }
-
-   public void convertUSD(String currencyType, double userInput){     //converting all currency types to USD, then to respective selected types
+    /*Part one of converting user input into selected currency type
+    Method convertUSD converts the user's input of selected currency type, stored in string variable currencyType,
+    into a base unit of United States Dollar (USD) and stores it in the global variable userInputUsd*/
+    public void convertUSD(String currencyType, double userInput){
        switch(currencyType){
            case "usd":
                userInputUsd = userInput;
@@ -164,7 +183,9 @@ public class ConvertCurrency extends AppCompatActivity {
        }
    }
 
-   public void convertActual (String currencyType, double userInputUsd){
+    /*Part two of converting user input into selected currency type.
+    Method convertActual takes in the value of userInputUsd and calculates the result of the conversion based on what user has selected, stored in string variable currencyType*/
+    public void convertActual (String currencyType, double userInputUsd){
         switch(currencyType){
             case "usd":
                 convertedResult = userInputUsd;

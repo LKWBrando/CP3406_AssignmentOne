@@ -9,19 +9,18 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class CurrencyOptionsActivity extends AppCompatActivity {
-
-    Boolean currencyOptionString;
+    Boolean currencyOptionStatus; //Boolean variable checks if user has clicked on initial or converted currency button
     ImageButton audButton; ImageButton eurButton; ImageButton gbpButton;
     ImageButton hkdButton; ImageButton idrButton; ImageButton inrButton;
     ImageButton jpyButton; ImageButton myrButton; ImageButton nzdButton;
     ImageButton sgdButton; ImageButton thbButton; ImageButton usdButton;
     Button returnButton;
-    SharedPreferences preferences;
+    SharedPreferences preferences; //used to store and manage values based on user activity from current and other activities
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_currency);
+        setContentView(R.layout.activity_currency_selection);
         audButton = findViewById(R.id.audButton);
         eurButton = findViewById(R.id.eurButton);
         gbpButton = findViewById(R.id.gbpButton);
@@ -39,23 +38,26 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
+    protected void onStart() {  //onStart, get
         super.onStart();
-        currencyOptionString = preferences.getBoolean("currencyBoolean", true );
+        currencyOptionStatus = preferences.getBoolean("currencyBoolean", true );
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        currencyOptionString = preferences.getBoolean("currencyBoolean", true );
+        currencyOptionStatus = preferences.getBoolean("currencyBoolean", true );
     }
 
+    /*Method onButtonPress for android:onClick in the activity_currency_selection.xml file
+    Checks the Boolean variable currencyOptionStatus to assign values accordingly;
+    True appends the preferences values to reflect changes in the initial currency type
+    False appends the preferences values to reflect changes in the converting currency type*/
     public void onButtonPress(View view){
         Intent menuActivity = new Intent(this, ConvertCurrency.class);
-
         switch(view.getId()){
             case (R.id.audButton):
-                if(currencyOptionString){
+                if(currencyOptionStatus){
                     preferences.edit().putString("Option1", "aud").apply();
                 }
                 else{
@@ -65,7 +67,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
                 break;
 
             case (R.id.eurButton):
-                if(currencyOptionString){
+                if(currencyOptionStatus){
                     preferences.edit().putString("Option1", "eur").apply();
                 }
                 else{
@@ -75,7 +77,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
                 break;
 
             case (R.id.gbpButton):
-                if(currencyOptionString){
+                if(currencyOptionStatus){
                     preferences.edit().putString("Option1", "gbp").apply();
                 }
                 else{
@@ -85,7 +87,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
                 break;
 
             case (R.id.hkdButton):
-                if(currencyOptionString){
+                if(currencyOptionStatus){
                     preferences.edit().putString("Option1", "hkd").apply();
                 }
                 else{
@@ -95,7 +97,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
                 break;
 
             case (R.id.idrButton):
-                if(currencyOptionString){
+                if(currencyOptionStatus){
                     preferences.edit().putString("Option1", "idr").apply();
                 }
                 else{
@@ -105,7 +107,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
                 break;
 
             case (R.id.inrButton):
-                if(currencyOptionString){
+                if(currencyOptionStatus){
                     preferences.edit().putString("Option1", "inr").apply();
                 }
                 else{
@@ -115,7 +117,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
                 break;
 
             case (R.id.jpyButton):
-                if(currencyOptionString){
+                if(currencyOptionStatus){
                     preferences.edit().putString("Option1", "jpy").apply();
                 }
                 else{
@@ -125,7 +127,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
                 break;
 
             case (R.id.myrButton):
-                if(currencyOptionString){
+                if(currencyOptionStatus){
                     preferences.edit().putString("Option1", "myr").apply();
                 }
                 else{
@@ -135,7 +137,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
                 break;
 
             case (R.id.nzdButton):
-                if(currencyOptionString){
+                if(currencyOptionStatus){
                     preferences.edit().putString("Option1", "nzd").apply();
                 }
                 else{
@@ -145,7 +147,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
                 break;
 
             case (R.id.sgdButton):
-                if(currencyOptionString){
+                if(currencyOptionStatus){
                     preferences.edit().putString("Option1", "sgd").apply();
                 }
                 else{
@@ -155,7 +157,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
                 break;
 
             case (R.id.thbButton):
-                if(currencyOptionString){
+                if(currencyOptionStatus){
                     preferences.edit().putString("Option1", "thb").apply();
                 }
                 else{
@@ -165,7 +167,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
                 break;
 
             case (R.id.usdButton):
-                if(currencyOptionString){
+                if(currencyOptionStatus){
                     preferences.edit().putString("Option1", "usd").apply();
                 }
                 else{
@@ -174,7 +176,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
                 startActivity(menuActivity);
                 break;
 
-            case (R.id.returnButton):
+            case (R.id.returnButton): //returns to activity_convert_currency without any changes
                 startActivity(menuActivity);
                 break;
         }
