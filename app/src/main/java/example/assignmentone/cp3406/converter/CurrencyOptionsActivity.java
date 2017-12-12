@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 
 public class CurrencyOptionsActivity extends AppCompatActivity {
     Boolean currencyOptionStatus; //Boolean variable checks if user has clicked on initial or converted currency button
+    Boolean settingsOptionStatus;
     ImageButton audButton; ImageButton eurButton; ImageButton gbpButton;
     ImageButton hkdButton; ImageButton idrButton; ImageButton inrButton;
     ImageButton jpyButton; ImageButton myrButton; ImageButton nzdButton;
@@ -40,12 +41,16 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
     @Override
     protected void onStart() {  //onStart, get
         super.onStart();
+        settingsOptionStatus = preferences.getBoolean("settingsBoolean", false);
         currencyOptionStatus = preferences.getBoolean("currencyBoolean", true );
+
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        settingsOptionStatus = preferences.getBoolean("settingsBoolean", false);
         currencyOptionStatus = preferences.getBoolean("currencyBoolean", true );
     }
 
@@ -54,130 +59,203 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
     True appends the preferences values to reflect changes in the initial currency type
     False appends the preferences values to reflect changes in the converting currency type*/
     public void onButtonPress(View view){
-        Intent menuActivity = new Intent(this, ConvertCurrency.class);
+        Intent returnToCurrencyConverter = new Intent(this, ConvertCurrency.class);
+        Intent returnToSettings = new Intent(this, SettingsActivity.class);
         switch(view.getId()){
             case (R.id.audButton):
-                if(currencyOptionStatus){
+                if(currencyOptionStatus && !settingsOptionStatus){
                     preferences.edit().putString("Option1", "aud").apply();
+                    startActivity(returnToCurrencyConverter);
+                }
+                else if (!currencyOptionStatus && !settingsOptionStatus){
+                    preferences.edit().putString("Option2", "aud").apply();
+                    startActivity(returnToCurrencyConverter);
                 }
                 else{
-                    preferences.edit().putString("Option2", "aud").apply();
+                    preferences.edit().putString("settingsPref", "aud").apply();
+                    preferences.edit().putBoolean("settingsBoolean", false).apply();
+                    startActivity(returnToSettings);
                 }
-                startActivity(menuActivity);
                 break;
 
             case (R.id.eurButton):
-                if(currencyOptionStatus){
+                if(currencyOptionStatus && !settingsOptionStatus){
                     preferences.edit().putString("Option1", "eur").apply();
+                    startActivity(returnToCurrencyConverter);
+                }
+                else if (!currencyOptionStatus && !settingsOptionStatus){
+                    preferences.edit().putString("Option2", "eur").apply();
+                    startActivity(returnToCurrencyConverter);
                 }
                 else{
-                    preferences.edit().putString("Option2", "eur").apply();
+                    preferences.edit().putString("settingsPref", "eur").apply();
+                    preferences.edit().putBoolean("settingsBoolean", false).apply();
+                    startActivity(returnToSettings);
                 }
-                startActivity(menuActivity);
                 break;
 
             case (R.id.gbpButton):
-                if(currencyOptionStatus){
+                if(currencyOptionStatus && !settingsOptionStatus){
                     preferences.edit().putString("Option1", "gbp").apply();
+                    startActivity(returnToCurrencyConverter);
+                }
+                else if (!currencyOptionStatus && !settingsOptionStatus){
+                    preferences.edit().putString("Option2", "gbp").apply();
+                    startActivity(returnToCurrencyConverter);
                 }
                 else{
-                    preferences.edit().putString("Option2", "gbp").apply();
+                    preferences.edit().putString("settingsPref", "gbp").apply();
+                    preferences.edit().putBoolean("settingsBoolean", false).apply();
+                    startActivity(returnToSettings);
                 }
-                startActivity(menuActivity);
                 break;
 
             case (R.id.hkdButton):
-                if(currencyOptionStatus){
+                if(currencyOptionStatus && !settingsOptionStatus){
                     preferences.edit().putString("Option1", "hkd").apply();
+                    startActivity(returnToCurrencyConverter);
+                }
+                else if (!currencyOptionStatus && !settingsOptionStatus){
+                    preferences.edit().putString("Option2", "hkd").apply();
+                    startActivity(returnToCurrencyConverter);
                 }
                 else{
-                    preferences.edit().putString("Option2", "hkd").apply();
+                    preferences.edit().putString("settingsPref", "hkd").apply();
+                    preferences.edit().putBoolean("settingsBoolean", false).apply();
+                    startActivity(returnToSettings);
                 }
-                startActivity(menuActivity);
                 break;
 
             case (R.id.idrButton):
-                if(currencyOptionStatus){
+                if(currencyOptionStatus && !settingsOptionStatus){
                     preferences.edit().putString("Option1", "idr").apply();
+                    startActivity(returnToCurrencyConverter);
+                }
+                else if (!currencyOptionStatus && !settingsOptionStatus){
+                    preferences.edit().putString("Option2", "idr").apply();
+                    startActivity(returnToCurrencyConverter);
                 }
                 else{
-                    preferences.edit().putString("Option2", "idr").apply();
+                    preferences.edit().putString("settingsPref", "idr").apply();
+                    preferences.edit().putBoolean("settingsBoolean", false).apply();
+                    startActivity(returnToSettings);
                 }
-                startActivity(menuActivity);
                 break;
 
             case (R.id.inrButton):
-                if(currencyOptionStatus){
+                if(currencyOptionStatus && !settingsOptionStatus){
                     preferences.edit().putString("Option1", "inr").apply();
+                    startActivity(returnToCurrencyConverter);
+                }
+                else if (!currencyOptionStatus && !settingsOptionStatus){
+                    preferences.edit().putString("Option2", "inr").apply();
+                    startActivity(returnToCurrencyConverter);
                 }
                 else{
-                    preferences.edit().putString("Option2", "inr").apply();
+                    preferences.edit().putString("settingsPref", "inr").apply();
+                    preferences.edit().putBoolean("settingsBoolean", false).apply();
+                    startActivity(returnToSettings);
                 }
-                startActivity(menuActivity);
                 break;
 
             case (R.id.jpyButton):
-                if(currencyOptionStatus){
+                if(currencyOptionStatus && !settingsOptionStatus){
                     preferences.edit().putString("Option1", "jpy").apply();
+                    startActivity(returnToCurrencyConverter);
+                }
+                else if (!currencyOptionStatus && !settingsOptionStatus){
+                    preferences.edit().putString("Option2", "jpy").apply();
+                    startActivity(returnToCurrencyConverter);
                 }
                 else{
-                    preferences.edit().putString("Option2", "jpy").apply();
+                    preferences.edit().putString("settingsPref", "jpy").apply();
+                    preferences.edit().putBoolean("settingsBoolean", false).apply();
+                    startActivity(returnToSettings);
                 }
-                startActivity(menuActivity);
                 break;
 
             case (R.id.myrButton):
-                if(currencyOptionStatus){
+                if(currencyOptionStatus && !settingsOptionStatus){
                     preferences.edit().putString("Option1", "myr").apply();
+                    startActivity(returnToCurrencyConverter);
+                }
+                else if (!currencyOptionStatus && !settingsOptionStatus){
+                    preferences.edit().putString("Option2", "myr").apply();
+                    startActivity(returnToCurrencyConverter);
                 }
                 else{
-                    preferences.edit().putString("Option2", "myr").apply();
+                    preferences.edit().putString("settingsPref", "myr").apply();
+                    preferences.edit().putBoolean("settingsBoolean", false).apply();
+                    startActivity(returnToSettings);
                 }
-                startActivity(menuActivity);
                 break;
 
             case (R.id.nzdButton):
-                if(currencyOptionStatus){
+                if(currencyOptionStatus && !settingsOptionStatus){
                     preferences.edit().putString("Option1", "nzd").apply();
+                    startActivity(returnToCurrencyConverter);
+                }
+                else if (!currencyOptionStatus && !settingsOptionStatus){
+                    preferences.edit().putString("Option2", "nzd").apply();
+                    startActivity(returnToCurrencyConverter);
                 }
                 else{
-                    preferences.edit().putString("Option2", "nzd").apply();
+                    preferences.edit().putString("settingsPref", "nzd").apply();
+                    preferences.edit().putBoolean("settingsBoolean", false).apply();
+                    startActivity(returnToSettings);
                 }
-                startActivity(menuActivity);
                 break;
 
             case (R.id.sgdButton):
-                if(currencyOptionStatus){
+                if(currencyOptionStatus && !settingsOptionStatus){
                     preferences.edit().putString("Option1", "sgd").apply();
+                    startActivity(returnToCurrencyConverter);
+                }
+                else if (!currencyOptionStatus && !settingsOptionStatus){
+                    preferences.edit().putString("Option2", "sgd").apply();
+                    startActivity(returnToCurrencyConverter);
                 }
                 else{
-                    preferences.edit().putString("Option2", "sgd").apply();
+                    preferences.edit().putString("settingsPref", "sgd").apply();
+                    preferences.edit().putBoolean("settingsBoolean", false).apply();
+                    startActivity(returnToSettings);
                 }
-                startActivity(menuActivity);
                 break;
 
             case (R.id.thbButton):
-                if(currencyOptionStatus){
+                if(currencyOptionStatus && !settingsOptionStatus){
                     preferences.edit().putString("Option1", "thb").apply();
+                    startActivity(returnToCurrencyConverter);
+                }
+                else if (!currencyOptionStatus && !settingsOptionStatus){
+                    preferences.edit().putString("Option2", "thb").apply();
+                    startActivity(returnToCurrencyConverter);
                 }
                 else{
-                    preferences.edit().putString("Option2", "thb").apply();
+                    preferences.edit().putString("settingsPref", "thb").apply();
+                    preferences.edit().putBoolean("settingsBoolean", false).apply();
+                    startActivity(returnToSettings);
                 }
-                startActivity(menuActivity);
                 break;
 
             case (R.id.usdButton):
-                if(currencyOptionStatus){
+                if(currencyOptionStatus && !settingsOptionStatus){
                     preferences.edit().putString("Option1", "usd").apply();
+                    startActivity(returnToCurrencyConverter);
+                }
+                else if (!currencyOptionStatus && !settingsOptionStatus){
+                    preferences.edit().putString("Option2", "usd").apply();
+                    startActivity(returnToCurrencyConverter);
                 }
                 else{
-                    preferences.edit().putString("Option2", "usd").apply();
+                    preferences.edit().putString("settingsPref", "usd").apply();
+                    preferences.edit().putBoolean("settingsBoolean", false).apply();
+                    startActivity(returnToSettings);
                 }
-                startActivity(menuActivity);
                 break;
 
             case (R.id.returnButton): //returns to activity_convert_currency without any changes
-                startActivity(menuActivity);
+                startActivity(returnToCurrencyConverter);
                 break;
         }
     }

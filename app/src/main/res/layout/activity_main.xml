@@ -13,31 +13,36 @@
         android:id="@+id/welcomeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to the \none stop solution to all your conversion needs!"
+        android:text="Welcome to the \nOne-stop Application \nto all your conversion needs!"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
+        android:textSize="20dp"
         android:gravity="center" />
-    
+
     <LinearLayout
+        android:id="@+id/linearLayoutTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/welcomeText"
         android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_below="@+id/welcomeText">
+        android:padding="16dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
 
             <ImageButton
                 android:id="@+id/currencyButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_centerHorizontal="true"
-                app:srcCompat="@mipmap/ic_launcher_round"
-                android:onClick="onButtonPress"/>
+                android:onClick="onButtonPress"
+                android:padding="0dp"
+                app:srcCompat="@drawable/menu_currency" />
 
             <TextView
                 android:id="@+id/currencyText"
@@ -45,22 +50,23 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/currencyButton"
                 android:layout_centerHorizontal="true"
-                android:text="Cash" />
+                android:text="Currency" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
 
             <ImageButton
                 android:id="@+id/unitButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_centerHorizontal="true"
-                app:srcCompat="@mipmap/ic_launcher_round"
-                android:onClick="onButtonPress"/>
+                android:onClick="onButtonPress"
+                android:padding="0dp"
+                app:srcCompat="@drawable/menu_length" />
 
             <TextView
                 android:id="@+id/unitText"
@@ -68,9 +74,67 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/unitButton"
                 android:layout_centerHorizontal="true"
-                android:text="Units" />
+                android:text="Length \n (WIP)"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayoutTop"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/timezoneButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:onClick="onButtonPress"
+                android:padding="0dp"
+                app:srcCompat="@drawable/menu_time" />
+
+            <TextView
+                android:layout_below="@id/timezoneButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="Timezone \n (WIP)" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/volumeButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:onClick="onButtonPress"
+                android:padding="0dp"
+                app:srcCompat="@drawable/menu_volume" />
+
+            <TextView
+                android:layout_below="@+id/volumeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="Volume \n (WIP)" />
+        </RelativeLayout>
     </LinearLayout>
 
 </RelativeLayout>

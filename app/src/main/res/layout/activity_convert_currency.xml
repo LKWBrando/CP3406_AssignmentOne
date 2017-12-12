@@ -135,7 +135,8 @@
             android:layout_height="wrap_content"
             android:text="Options"
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:onClick="onButtonPress"/>
 
         <Button
             android:id="@+id/resetButton"

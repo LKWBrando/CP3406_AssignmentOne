@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class ConvertCurrency extends AppCompatActivity {
     EditText inputCurrency;
     TextView convertedCurrency;
@@ -90,7 +93,7 @@ public class ConvertCurrency extends AppCompatActivity {
                     if(!inputCurrencyType.getText().toString().equals("Choose a currency!")  && !convertedCurrencyType.getText().toString().equals("Choose a currency!")){
                         convertUSD(inputCurrencyType.getText().toString(), userInput); //Calling conversion methods
                         convertActual(convertedCurrencyType.getText().toString(), userInputUsd); //Calling conversion methods
-                        convertedCurrency.setText(Double.toString(convertedResult));
+                        convertedCurrency.setText(Double.toString(roundConvertedValue(convertedResult, 2))); //rounding off to two decimal places, then parsing to String
                         equalsMessage.setText("Equates to...");
                     }
                 }
@@ -103,11 +106,16 @@ public class ConvertCurrency extends AppCompatActivity {
    }
 
     public void onButtonPress(View view){   //Method called for android:onClick in the activity_convert_currency.xml file
+        Intent goToOptions = new Intent(this, SettingsActivity.class);
         Intent returnToMenu = new Intent(this, MainActivity.class); //Intent for returning to the main menu
         Intent goToCurrencyMenu = new Intent(this, CurrencyOptionsActivity.class);  //Intent for switching to the currency options menu
         switch(view.getId()){
             case R.id.homeButton:   //Home button returns to the initial screen
                 startActivity(returnToMenu);
+                break;
+
+            case R.id.optionsButton:
+                startActivity(goToOptions);
                 break;
 
             case R.id.initialCurrencyButton:    //Starts activity that allows users to choose currency type
@@ -133,9 +141,9 @@ public class ConvertCurrency extends AppCompatActivity {
                 userInput = 0;
                 userInputUsd = 0;
                 convertedResult = 0;
+                break;
         }
     }
-
 
     /*Part one of converting user input into selected currency type
     Method convertUSD converts the user's input of selected currency type, stored in string variable currencyType,
@@ -227,4 +235,13 @@ public class ConvertCurrency extends AppCompatActivity {
                 break;
         }
    }
+
+    /*Method to round double number to two decimal places.
+    Taken from https://stackoverflow.com/questions/2808535/round-a-double-to-2-decimal-places*/
+    private static Double roundConvertedValue(Double convertedResult, int decimalPlace){
+        if (decimalPlace < 0) throw new IllegalArgumentException();
+        BigDecimal bd = new BigDecimal(convertedResult);
+        bd = bd.setScale(decimalPlace, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
 }

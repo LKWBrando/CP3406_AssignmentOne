@@ -7,33 +7,21 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
-
     ImageButton currencyButton;
-    ImageButton unitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         currencyButton = findViewById(R.id.currencyButton);
-        unitButton = findViewById(R.id.unitButton);
     }
 
-    public void onButtonPress(View view){
+    public void onButtonPress(View view){   //Method onButtonPress for android:onClick in the activity_main.xml file
         switch(view.getId()){
-            case R.id.currencyButton:
+            case R.id.currencyButton:   //Starts activity_convert_currency on button click
                 Intent convertCurrency = new Intent(this, ConvertCurrency.class);
                 startActivity(convertCurrency);
                 break;
-
-            case R.id.unitButton:
-                Intent convertUnits = new Intent(this, UnitsActivity.class);
-                startActivity(convertUnits);
-                break;
         }
-
     }
-
-
 }
