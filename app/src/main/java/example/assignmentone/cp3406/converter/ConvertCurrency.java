@@ -8,14 +8,16 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ConvertCurrency extends AppCompatActivity {
-
     EditText initialCurrency;
     EditText changedCurrency;
     TextView initialCurrencyString;
     TextView changedCurrencyString;
+    ImageView initialImage;
+    ImageView changedImage;
     double userInput;
     double userInputUsd;
     double convertedResult;
@@ -29,6 +31,8 @@ public class ConvertCurrency extends AppCompatActivity {
         changedCurrency = findViewById(R.id.changedCurrency);
         initialCurrencyString = findViewById(R.id.initialCurrencyString);
         changedCurrencyString = findViewById(R.id.changedCurrencyString);
+        initialImage = findViewById(R.id.initialImage);
+        changedImage = findViewById(R.id.changedImage);
         preferences = getSharedPreferences("Settings" , MODE_PRIVATE);
     }
 
@@ -66,6 +70,8 @@ public class ConvertCurrency extends AppCompatActivity {
                 changedCurrencyString.setText("Choose a currency!");
                 preferences.edit().putString("Option1", null).apply();
                 preferences.edit().putString("Option2", null).apply();
+                initialImage.setImageResource(R.drawable.dollar_sign);
+                changedImage.setImageResource(R.drawable.dollar_sign);
                 initialCurrency.setText("");
                 changedCurrency.setText("");
                 userInput = 0;
@@ -75,10 +81,20 @@ public class ConvertCurrency extends AppCompatActivity {
     }
 
    public void converterMain(){
-
+       String imageFileName;
+       int resId;
        initialCurrencyString.setText(preferences.getString("Option1", "Choose a currency!"));
        changedCurrencyString.setText(preferences.getString("Option2", "Choose a currency!"));
        initialCurrency.setText(preferences.getString("initialUserInput", null));
+
+       //if(!initialCurrencyString.getText().toString().equals("Choose a currency!")){
+       imageFileName = initialCurrencyString.getText().toString();
+       resId = getResources().getIdentifier(imageFileName, "drawable", getPackageName());
+       initialImage.setImageResource(resId);
+
+       imageFileName = changedCurrencyString.getText().toString();
+       resId = getResources().getIdentifier(imageFileName, "drawable", getPackageName());
+       changedImage.setImageResource(resId);
 
        initialCurrency.addTextChangedListener(new TextWatcher() {
            @Override
@@ -101,22 +117,6 @@ public class ConvertCurrency extends AppCompatActivity {
 
            @Override
            public void afterTextChanged(Editable editable) {
-           }
-       });
-
-       changedCurrency.addTextChangedListener(new TextWatcher() {
-           @Override
-           public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-           }
-
-           @Override
-           public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-           }
-
-           @Override
-           public void afterTextChanged(Editable editable) {
-
            }
        });
    }

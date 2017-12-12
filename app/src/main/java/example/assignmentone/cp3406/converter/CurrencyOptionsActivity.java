@@ -11,8 +11,7 @@ import android.widget.ImageButton;
 public class CurrencyOptionsActivity extends AppCompatActivity {
 
     Boolean currencyOptionString;
-    ImageButton audButton; ImageButton cadButton; ImageButton chfButton;
-    ImageButton cnyButton; ImageButton eurButton; ImageButton gbpButton;
+    ImageButton audButton; ImageButton eurButton; ImageButton gbpButton;
     ImageButton hkdButton; ImageButton idrButton; ImageButton inrButton;
     ImageButton jpyButton; ImageButton myrButton; ImageButton nzdButton;
     ImageButton sgdButton; ImageButton thbButton; ImageButton usdButton;
@@ -24,7 +23,6 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency);
         audButton = findViewById(R.id.audButton);
-
         eurButton = findViewById(R.id.eurButton);
         gbpButton = findViewById(R.id.gbpButton);
         hkdButton = findViewById(R.id.hkdButton);

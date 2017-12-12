@@ -34,6 +34,13 @@
             android:layout_gravity="center"
             android:layout_weight="1">
 
+            <ImageView
+                android:id="@+id/initialImage"
+                android:layout_width="100px"
+                android:layout_height="60px"
+                android:layout_gravity="center"
+                android:src="@drawable/dollar_sign"
+                />
             <TextView
                 android:id="@+id/initialCurrencyString"
                 android:layout_width="wrap_content"
@@ -80,6 +87,13 @@
             android:layout_gravity="center"
             android:layout_weight="1">
 
+            <ImageView
+                android:id="@+id/changedImage"
+                android:layout_width="100px"
+                android:layout_height="60px"
+                android:layout_gravity="center"
+                android:src="@drawable/dollar_sign"
+                />
             <TextView
                 android:id="@+id/changedCurrencyString"
                 android:layout_width="wrap_content"
