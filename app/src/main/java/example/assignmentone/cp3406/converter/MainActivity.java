@@ -1,3 +1,7 @@
+/*This application was designed for JCU Singapore, CP3406 Mobile Computing, Assignment One
+* Created by Lum Kwan Wei Brandon, Student number 13379339
+* Submission Date 13 December 2017*/
+
 package example.assignmentone.cp3406.converter;
 
 import android.content.Intent;
