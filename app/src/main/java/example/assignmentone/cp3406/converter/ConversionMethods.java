@@ -1,14 +1,9 @@
-package example.assignmentone.cp3406.converter;
+/*ConversionMethods is used to contain all the methods regarding the calculation of the currency conversion methods, and future mathematical methods*/
 
-import android.app.Activity;
-import android.content.SharedPreferences;
+package example.assignmentone.cp3406.converter;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-
-/**
- * Created by Brandon on 13/12/2017.
- */
 
 public class ConversionMethods {
 

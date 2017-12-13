@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,12 +9,14 @@
     android:padding="10dp"
     tools:context="example.assignmentone.cp3406.converter.ConvertCurrency">
 
+    <!--Layout for currency to be converted portion-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_weight="3">
 
+        <!--EditText for user input-->
         <EditText
             android:id="@+id/inputCurrency"
             android:layout_width="wrap_content"
@@ -28,6 +29,7 @@
             android:imeOptions="actionDone"
             android:layout_weight="1"/>
 
+        <!--Nested Layout for Image, text and Change currency Button-->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,19 +37,23 @@
             android:layout_gravity="center"
             android:layout_weight="1">
 
+            <!--ImageView based on selected currency-->
             <ImageView
                 android:id="@+id/inputImage"
                 android:layout_width="100px"
                 android:layout_height="60px"
                 android:layout_gravity="center"
-                android:src="@drawable/dollar_sign"
-                />
+                android:src="@drawable/dollar_sign" />
+
+            <!--TextView based on selected currency-->
             <TextView
                 android:id="@+id/inputCurrencyType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Choose a currency!"
                 android:layout_gravity="center"/>
+
+            <!--Button to start activity to allow user to choose currency types-->
             <Button
                 android:id="@+id/initialCurrencyButton"
                 android:layout_width="100dp"
@@ -58,6 +64,7 @@
         </LinearLayout>
     </LinearLayout>
 
+    <!--TextView to display a simple conversion message-->
     <TextView
         android:id="@+id/equalsMessage"
         android:layout_width="match_parent"
@@ -66,12 +73,14 @@
         android:layout_gravity="start"
         android:layout_weight="0.5"/>
 
+    <!--Layout for results of converted currency and options-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_weight="3">
 
+        <!--TextView that displays converted currency results-->
         <TextView
             android:id="@+id/convertedCurrency"
             android:layout_width="wrap_content"
@@ -83,6 +92,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"/>
 
+        <!--Nested Layout for Image, text and Change currency Button-->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -90,18 +100,23 @@
             android:layout_gravity="center"
             android:layout_weight="1">
 
+            <!--ImageView based on selected currency-->
             <ImageView
                 android:id="@+id/convertedImage"
                 android:layout_width="100px"
                 android:layout_height="60px"
                 android:layout_gravity="center"
                 android:src="@drawable/dollar_sign" />
+
+            <!--TextView based on selected currency-->
             <TextView
                 android:id="@+id/convertedCurrencyType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Choose a currency!"
                 android:layout_gravity="center"/>
+
+            <!--Button to start activity to allow user to choose currency types-->
             <Button
                 android:id="@+id/convertedCurrencyButton"
                 android:layout_width="100dp"
@@ -112,6 +127,7 @@
         </LinearLayout>
     </LinearLayout>
 
+    <!--Layout for the various action Button-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -146,6 +162,7 @@
             android:onClick="onButtonPress"/>
     </LinearLayout>
 
+    <!--TextView to display a simple message-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

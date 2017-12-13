@@ -352,6 +352,7 @@
             android:textAppearance="@android:style/TextAppearance.Material.Medium"/>
     </LinearLayout>
 
+    <!--Button to return to previous activity-->
     <Button
         android:id="@+id/returnButton"
         android:layout_width="wrap_content"

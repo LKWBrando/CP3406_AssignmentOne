@@ -9,19 +9,19 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
     ImageButton currencyButton;
-    SharedPreferences preferences;
+    SharedPreferences preferences; //used to store and manage values based on user activity from current and other activities
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         preferences = getSharedPreferences("Settings", MODE_PRIVATE);
-        setPrefTheme();
+        setPrefTheme(); //Setting preferred theme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         currencyButton = findViewById(R.id.currencyButton);
-
     }
 
-    public void onButtonPress(View view){   //Method onButtonPress for android:onClick in the activity_main.xml file
+    //Method onButtonPress for android:onClick in the activity_main.xml file
+    public void onButtonPress(View view){
         switch(view.getId()){
             case R.id.currencyButton:   //Starts activity_convert_currency on button click
                 Intent convertCurrency = new Intent(this, ConvertCurrency.class);
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Method to set preference application theme according to previous user selection
     public void setPrefTheme(){
         String prefTheme = preferences.getString("themeName", "AppTheme");
         if(prefTheme.equals("AppTheme")){
@@ -39,5 +40,4 @@ public class MainActivity extends AppCompatActivity {
             setTheme(R.style.NightMode);
         }
     }
-
 }

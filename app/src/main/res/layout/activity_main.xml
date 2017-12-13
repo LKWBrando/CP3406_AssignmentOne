@@ -9,17 +9,19 @@
     android:padding="20dp"
     tools:context="example.assignmentone.cp3406.converter.MainActivity">
 
+    <!--Welcome Text-->
     <TextView
         android:id="@+id/welcomeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to the \nOne-stop Application \nto all your conversion needs!"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium"
         android:textSize="20dp"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:text="Welcome to the \nOne-stop Application \nto all your conversion needs!"/>
 
+    <!--Layout for Currency and Length Buttons-->
     <LinearLayout
         android:id="@+id/linearLayoutTop"
         android:layout_width="match_parent"
@@ -29,21 +31,23 @@
         android:layout_below="@+id/welcomeText"
         android:orientation="horizontal">
 
+        <!--Nested Layout for Currency Button-->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">
 
+            <!--Currency Button-->
             <ImageButton
                 android:id="@+id/currencyButton"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
-                android:onClick="onButtonPress"
-                android:padding="0dp"
-                app:srcCompat="@drawable/menu_currency" />
+                app:srcCompat="@drawable/menu_currency"
+                android:onClick="onButtonPress"/>
 
+            <!--Currency Button Description-->
             <TextView
                 android:id="@+id/currencyText"
                 android:layout_width="wrap_content"
@@ -54,21 +58,22 @@
                 android:text="Currency" />
         </RelativeLayout>
 
+        <!--Nested Layout for Length Button-->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">
 
+            <!--Length Button (Display Only)-->
             <ImageButton
                 android:id="@+id/unitButton"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
-                android:onClick="onButtonPress"
-                android:padding="0dp"
                 app:srcCompat="@drawable/menu_length" />
 
+            <!--Length Button Text (Display Only)-->
             <TextView
                 android:id="@+id/unitText"
                 android:layout_width="wrap_content"
@@ -81,6 +86,7 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <!--Layout for Timezone and Volume Buttons-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -89,21 +95,23 @@
         android:layout_below="@+id/linearLayoutTop"
         android:orientation="horizontal">
 
+        <!--Nested Layout for Timezone Button-->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">
 
+            <!--Timezone Button (Display Only)-->
             <ImageButton
                 android:id="@+id/timezoneButton"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
-                android:onClick="onButtonPress"
-                android:padding="0dp"
-                app:srcCompat="@drawable/menu_time" />
+                app:srcCompat="@drawable/menu_time"
+                android:onClick="onButtonPress"/>
 
+            <!--Timezone Button Text(Display Only)-->
             <TextView
                 android:layout_below="@id/timezoneButton"
                 android:layout_width="wrap_content"
@@ -114,21 +122,23 @@
                 android:text="Timezone \n (WIP)" />
         </RelativeLayout>
 
+        <!--Nested Layout for Volume Button-->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">
 
+            <!--Volume Button (Display Only)-->
             <ImageButton
                 android:id="@+id/volumeButton"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
-                android:onClick="onButtonPress"
-                android:padding="0dp"
-                app:srcCompat="@drawable/menu_volume" />
+                app:srcCompat="@drawable/menu_volume"
+                android:onClick="onButtonPress"/>
 
+            <!--Volume Button Text(Display Only)-->
             <TextView
                 android:layout_below="@+id/volumeButton"
                 android:layout_width="wrap_content"
@@ -139,5 +149,4 @@
                 android:text="Volume \n (WIP)" />
         </RelativeLayout>
     </LinearLayout>
-
 </RelativeLayout>

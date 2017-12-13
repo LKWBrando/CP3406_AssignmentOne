@@ -38,18 +38,17 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
         thbButton = findViewById(R.id.thbButton);
         usdButton = findViewById(R.id.usdButton);
         returnButton = findViewById(R.id.returnButton);
-
     }
 
     @Override
-    protected void onStart() {  //onStart, get
+    protected void onStart() {  //onStart, get Boolean variables that help to decide how this activity was started
         super.onStart();
         settingsOptionStatus = preferences.getBoolean("settingsBoolean", false);
         currencyOptionStatus = preferences.getBoolean("currencyBoolean", true );
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume() { //onResume, get Boolean variables that help to decide how this activity was started
         super.onResume();
         settingsOptionStatus = preferences.getBoolean("settingsBoolean", false);
         currencyOptionStatus = preferences.getBoolean("currencyBoolean", true );
@@ -58,7 +57,8 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
     /*Method onButtonPress for android:onClick in the activity_currency_selection.xml file
     Checks the Boolean variable currencyOptionStatus to assign values accordingly;
     True appends the preferences values to reflect changes in the initial currency type
-    False appends the preferences values to reflect changes in the converting currency type*/
+    False appends the preferences values to reflect changes in the converting currency type
+    Boolean variable settingsOptionStatus is used to determine if activity was started from SettingsActivity; True = yes, False = no*/
     public void onButtonPress(View view){
         Intent returnToCurrencyConverter = new Intent(this, ConvertCurrency.class);
         Intent returnToSettings = new Intent(this, SettingsActivity.class);
@@ -72,9 +72,9 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
                 }
                 else{   //Else button clicked is from settings page, appends preference based on user input
                     preferences.edit().putString("settingsPref", "aud").apply();
-                    preferences.edit().putBoolean("settingsBoolean", false).apply();
+                    preferences.edit().putBoolean("settingsBoolean", false).apply(); //Reset the Boolean variable to prevent recursion
                 }
-                finish();
+                finish(); //Ends the activity
                 break;
 
             case (R.id.eurButton):
@@ -237,6 +237,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
         }
     }
 
+    //Method to set preference application theme according to previous user selection
     public void setPrefTheme(){
         String prefTheme = preferences.getString("themeName", "AppTheme");
         if(prefTheme.equals("AppTheme")){
