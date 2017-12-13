@@ -95,7 +95,7 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(refreshSettings);
                 break;
             case R.id.funTheme:
-                preferences.edit().putString("themeName", "FunTheme").apply();
+                preferences.edit().putString("themeName", "FunMode").apply();
                 startActivity(refreshSettings);
                 break;
         }
