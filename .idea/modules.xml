@@ -3,11 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CP3406_AssignmentOne.iml" filepath="$PROJECT_DIR$/CP3406_AssignmentOne.iml" />
-      <module fileurl="file://C:\Users\Brandon\AndroidStudioProjects\CP3406_AssignmentOne\CP3406_AssignmentOne.iml" filepath="C:\Users\Brandon\AndroidStudioProjects\CP3406_AssignmentOne\CP3406_AssignmentOne.iml" />
       <module fileurl="file://C:\Users\Brandon\AndroidStudioProjects\Converter\CP3406_AssignmentOne.iml" filepath="C:\Users\Brandon\AndroidStudioProjects\Converter\CP3406_AssignmentOne.iml" />
       <module fileurl="file://C:\Users\user\AndroidStudioProjects\CP3406_AssignmentOne\Converter.iml" filepath="C:\Users\user\AndroidStudioProjects\CP3406_AssignmentOne\Converter.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Brandon\AndroidStudioProjects\CP3406_AssignmentOne\app\app.iml" filepath="C:\Users\Brandon\AndroidStudioProjects\CP3406_AssignmentOne\app\app.iml" />
     </modules>
   </component>
 </project>

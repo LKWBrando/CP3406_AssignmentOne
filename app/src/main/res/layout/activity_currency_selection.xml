@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Choose a currency type below"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
             android:textSize="20sp"
             android:layout_gravity="center"
             android:layout_weight="2"/>
@@ -51,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
             android:text="USD"/>
     </LinearLayout>
 
@@ -77,7 +79,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="GBP"/>
+            android:text="GBP"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"/>
     </LinearLayout>
 
     <!--Second row, Third Column, SGD-->
@@ -103,7 +106,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="SGD"/>
+            android:text="SGD"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"/>
     </LinearLayout>
 
     <!--Third row, First Column, THB-->
@@ -129,7 +133,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="THB"/>
+            android:text="THB"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"/>
     </LinearLayout>
 
     <!--Third row, Second Column, MYR-->
@@ -155,7 +160,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="MYR"/>
+            android:text="MYR"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"/>
     </LinearLayout>
 
     <!--Third row, Third Column, JPY-->
@@ -181,7 +187,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="JPY"/>
+            android:text="JPY"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"/>
     </LinearLayout>
 
     <!--Fourth row, First Column, EUR-->
@@ -207,7 +214,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="EUR"/>
+            android:text="EUR"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"/>
     </LinearLayout>
 
     <!--Fourth row, Second Column, AUD-->
@@ -233,7 +241,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="AUD"/>
+            android:text="AUD"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"/>
     </LinearLayout>
 
     <!--Fourth row, Third Column, IDR-->
@@ -258,7 +267,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="IDR"/>
+            android:text="IDR"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"/>
     </LinearLayout>
 
     <!--Fifth row, First Column, NZD-->
@@ -284,7 +294,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="NZD"/>
+            android:text="NZD"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"/>
     </LinearLayout>
 
     <!--Fifth row, Second Column, INR-->
@@ -310,7 +321,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="INR"/>
+            android:text="INR"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"/>
     </LinearLayout>
 
     <!--Fifth row, Third Column, HKD-->
@@ -336,7 +348,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="HKD"/>
+            android:text="HKD"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"/>
     </LinearLayout>
 
     <Button

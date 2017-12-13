@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,12 +12,14 @@
         android:layout_height="wrap_content"
         android:text="Currency"
         android:textSize="25dp"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
         android:padding="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Default Currency"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
         android:padding="10dp"/>
 
     <LinearLayout
@@ -37,6 +38,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
             android:text="Current default:"/>
 
         <ImageView
@@ -44,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/sgd"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
 
     </LinearLayout>
 
@@ -52,6 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Significant Figures"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
         android:padding="10dp"/>
 
     <LinearLayout
@@ -61,19 +65,30 @@
         android:weightSum="2"
         android:padding="10dp">
 
-        <RadioButton
-            android:id="@+id/wholeNumber"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/sigFigRadioGroup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Whole Number"
-            android:layout_weight="1"/>
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/wholeNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Whole Number"
+                android:layout_weight="1"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:onClick="onRadioButtonPress"/>
 
-        <RadioButton
-            android:id="@+id/twoDecimals"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Two Decimal Places"
-            android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/twoDecimals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Two Decimal Places"
+                android:layout_weight="1"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:onClick="onRadioButtonPress"/>
+        </RadioGroup>
+
     </LinearLayout>
 
     <TextView
@@ -81,6 +96,7 @@
         android:layout_height="wrap_content"
         android:text="Themes"
         android:textSize="25dp"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
         android:padding="10dp"/>
 
     <LinearLayout
@@ -90,26 +106,38 @@
         android:weightSum="3"
         android:padding="10dp">
 
-        <RadioButton
-            android:id="@+id/defaultTheme"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/themeRadioGroup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Default"
-            android:layout_weight="1"/>
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/defaultTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:text="Default"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonPress"/>
 
-        <RadioButton
-            android:id="@+id/nightTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Night"
-            android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/nightTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:text="Night"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonPress"/>
 
-        <RadioButton
-            android:id="@+id/funTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fun"
-            android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/funTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:text="Fun"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonPress"/>
+        </RadioGroup>
     </LinearLayout>
 
     <LinearLayout
@@ -124,13 +152,5 @@
             android:layout_height="wrap_content"
             android:text="Back"
             android:onClick="onButtonPress"/>
-
-        <Button
-            android:id="@+id/homeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Home"
-            android:onClick="onButtonPress"/>
-
     </LinearLayout>
 </LinearLayout>

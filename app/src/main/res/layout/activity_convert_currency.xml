@@ -76,12 +76,11 @@
             android:id="@+id/convertedCurrency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="The result appear here!"
+            android:hint="Result appears here!"
             android:textSize="20sp"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
             android:textAlignment="center"
             android:layout_gravity="center"
-            android:inputType="numberDecimal"
-            android:imeOptions="actionDone"
             android:layout_weight="1"/>
 
         <LinearLayout
@@ -96,8 +95,7 @@
                 android:layout_width="100px"
                 android:layout_height="60px"
                 android:layout_gravity="center"
-                android:src="@drawable/dollar_sign"
-                />
+                android:src="@drawable/dollar_sign" />
             <TextView
                 android:id="@+id/convertedCurrencyType"
                 android:layout_width="wrap_content"
@@ -154,6 +152,7 @@
         android:layout_gravity="end"
         android:textAlignment="textEnd"
         android:textSize="10dp"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
         android:layout_weight="0.5"
         android:text="Values accurate as of 13 November 2017"/>
 </LinearLayout>

@@ -16,6 +16,7 @@
         android:text="Welcome to the \nOne-stop Application \nto all your conversion needs!"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
         android:textSize="20dp"
         android:gravity="center" />
 
@@ -26,8 +27,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/welcomeText"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -37,8 +37,8 @@
 
             <ImageButton
                 android:id="@+id/currencyButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 android:onClick="onButtonPress"
                 android:padding="0dp"
@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/currencyButton"
                 android:layout_centerHorizontal="true"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
                 android:text="Currency" />
         </RelativeLayout>
 
@@ -61,8 +62,8 @@
 
             <ImageButton
                 android:id="@+id/unitButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 android:onClick="onButtonPress"
                 android:padding="0dp"
@@ -74,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/unitButton"
                 android:layout_centerHorizontal="true"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
                 android:text="Length \n (WIP)"
                 />
         </RelativeLayout>
@@ -85,8 +87,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/linearLayoutTop"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -96,8 +97,8 @@
 
             <ImageButton
                 android:id="@+id/timezoneButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 android:onClick="onButtonPress"
                 android:padding="0dp"
@@ -109,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
                 android:text="Timezone \n (WIP)" />
         </RelativeLayout>
 
@@ -120,8 +122,8 @@
 
             <ImageButton
                 android:id="@+id/volumeButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 android:onClick="onButtonPress"
                 android:padding="0dp"
@@ -133,6 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
                 android:text="Volume \n (WIP)" />
         </RelativeLayout>
     </LinearLayout>

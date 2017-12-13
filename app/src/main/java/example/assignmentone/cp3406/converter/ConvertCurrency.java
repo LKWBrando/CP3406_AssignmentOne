@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -29,6 +28,8 @@ public class ConvertCurrency extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { //onCreate, creates all required objects
+        preferences = getSharedPreferences("Settings" , MODE_PRIVATE);
+        setPrefTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_convert_currency);
         setTitle("Currency Converter");
@@ -39,7 +40,7 @@ public class ConvertCurrency extends AppCompatActivity {
         equalsMessage = findViewById(R.id.equalsMessage);
         inputImage = findViewById(R.id.inputImage);
         convertedImage = findViewById(R.id.convertedImage);
-        preferences = getSharedPreferences("Settings" , MODE_PRIVATE);
+
     }
 
     @Override
@@ -56,28 +57,38 @@ public class ConvertCurrency extends AppCompatActivity {
     /*Main method run onStart and onResume
     Sets selected preferences, string values, and images, as well as converting user input according to selected currency types*/
     public void currencyConverterMain(){
-        //Checks SharedPreferences for user input on the currency type, then displays the corresponding value
-        inputCurrencyType.setText(preferences.getString("Option1", "Choose a currency!"));
-        convertedCurrencyType.setText(preferences.getString("Option2", "Choose a currency!"));
-        inputCurrency.setText(preferences.getString("initialUserInput", null)); //Saves the user's input between switching activities.
-
+        String prefCurrencyType;
         String imageFileName;
         int resId;
-        //sets image of currency type according to current selected user input
-        imageFileName = inputCurrencyType.getText().toString();
-        if(imageFileName.equals("Choose a currency!")){
-            inputImage.setImageResource(R.drawable.dollar_sign);
-        }else{
-        resId = getResources().getIdentifier(imageFileName, "drawable", getPackageName());
-        inputImage.setImageResource(resId);}
+        prefCurrencyType = preferences.getString("settingsPref", "sgd");
+        inputCurrencyType.setText(preferences.getString("settingsPref", "sgd"));
+        resId = getResources().getIdentifier(prefCurrencyType, "drawable", getPackageName());
+        inputImage.setImageResource(resId);
 
-        //sets image of currency type according to current selected user input
+        String checkUserInput = preferences.getString("Option1", prefCurrencyType);
+        if(!inputCurrencyType.getText().toString().equals(checkUserInput)){
+            inputCurrencyType.setText(preferences.getString("Option1", prefCurrencyType));
+            imageFileName = inputCurrencyType.getText().toString();
+            resId = getResources().getIdentifier(imageFileName, "drawable", getPackageName());
+            inputImage.setImageResource(resId);
+        }
+
+        //Checks SharedPreferences for user input on the currency type, then displays the corresponding value
+        convertedCurrencyType.setText(preferences.getString("Option2", "Choose a currency!"));
         imageFileName = convertedCurrencyType.getText().toString();
         if(imageFileName.equals("Choose a currency!")){
             convertedImage.setImageResource(R.drawable.dollar_sign);
         }else{
-        resId = getResources().getIdentifier(imageFileName, "drawable", getPackageName());
-        convertedImage.setImageResource(resId);}
+            resId = getResources().getIdentifier(imageFileName, "drawable", getPackageName());
+            convertedImage.setImageResource(resId);}
+
+        //imageFileName = inputCurrencyType.getText().toString();
+        //if(!imageFileName.equals(prefCurrencyType)){
+        //resId = getResources().getIdentifier(imageFileName, "drawable", getPackageName());
+        //inputImage.setImageResource(resId);}
+
+        //sets image of currency type according to current selected user input
+        inputCurrency.setText(preferences.getString("initialUserInput", null)); //Saves the user's input between switching activities.
 
         inputCurrency.addTextChangedListener(new TextWatcher() { //Listener for EditText inputCurrency
             @Override
@@ -93,7 +104,8 @@ public class ConvertCurrency extends AppCompatActivity {
                     if(!inputCurrencyType.getText().toString().equals("Choose a currency!")  && !convertedCurrencyType.getText().toString().equals("Choose a currency!")){
                         convertUSD(inputCurrencyType.getText().toString(), userInput); //Calling conversion methods
                         convertActual(convertedCurrencyType.getText().toString(), userInputUsd); //Calling conversion methods
-                        convertedCurrency.setText(Double.toString(roundConvertedValue(convertedResult, 2))); //rounding off to two decimal places, then parsing to String
+                        int roundOffInt = preferences.getInt("roundingOff", 2);
+                        convertedCurrency.setText(Double.toString(roundConvertedValue(convertedResult, roundOffInt))); //rounding off to two decimal places, then parsing to String
                         equalsMessage.setText("Equates to...");
                     }
                 }
@@ -129,12 +141,17 @@ public class ConvertCurrency extends AppCompatActivity {
                 break;
 
             case R.id.resetButton:  //Resets all variables and stored preferences
-                inputCurrencyType.setText("Choose a currency!");
+                inputCurrencyType.setText(preferences.getString("settingsPref", "sgd"));
+                String prefImageFileName = preferences.getString("settingsPref", "sgd");
+                int resId = getResources().getIdentifier(prefImageFileName, "drawable", getPackageName());
+                inputImage.setImageResource(resId);
+
+                convertedImage.setImageResource(R.drawable.dollar_sign);
                 convertedCurrencyType.setText("Choose a currency!");
+
                 preferences.edit().putString("Option1", null).apply();
                 preferences.edit().putString("Option2", null).apply();
-                inputImage.setImageResource(R.drawable.dollar_sign);
-                convertedImage.setImageResource(R.drawable.dollar_sign);
+
                 inputCurrency.setText("");
                 convertedCurrency.setText("The result appear here!");
                 equalsMessage.setText("");
@@ -244,4 +261,15 @@ public class ConvertCurrency extends AppCompatActivity {
         bd = bd.setScale(decimalPlace, RoundingMode.HALF_UP);
         return bd.doubleValue();
     }
+
+    public void setPrefTheme(){
+        String prefTheme = preferences.getString("themeName", "AppTheme");
+        if(prefTheme.equals("AppTheme")){
+            setTheme(R.style.AppTheme);
+        }
+        else if(prefTheme.equals("NightMode")){
+            setTheme(R.style.NightMode);
+        }
+    }
+
 }
