@@ -19,7 +19,7 @@
         </activity>
         <activity android:name=".CurrencyOptionsActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ConvertCurrency"
+        <activity android:name=".ConvertCurrencyActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".SettingsActivity"
             android:screenOrientation="portrait"/>

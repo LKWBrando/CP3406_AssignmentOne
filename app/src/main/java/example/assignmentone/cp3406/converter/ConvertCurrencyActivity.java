@@ -14,7 +14,7 @@ import static example.assignmentone.cp3406.converter.ConversionMethods.convertAc
 import static example.assignmentone.cp3406.converter.ConversionMethods.convertUSD;
 import static example.assignmentone.cp3406.converter.ConversionMethods.roundConvertedValue;
 
-public class ConvertCurrency extends AppCompatActivity {
+public class ConvertCurrencyActivity extends AppCompatActivity {
     EditText inputCurrency;
     TextView convertedCurrency;
     TextView inputCurrencyType;

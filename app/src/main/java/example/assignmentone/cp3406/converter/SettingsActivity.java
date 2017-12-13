@@ -2,7 +2,6 @@ package example.assignmentone.cp3406.converter;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -63,7 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
     //Method onButtonPress for android:onClick in the activity_settings.xml file
     public void onButtonPress(View view){
         Intent goToCurrencyMenu = new Intent(this, CurrencyOptionsActivity.class);  //Intent for switching to the currency options page
-        Intent returnToCurrencyConverter = new Intent(this, ConvertCurrency.class);  //Intent for returning to the currency conversion page
+        Intent returnToCurrencyConverter = new Intent(this, ConvertCurrencyActivity.class);  //Intent for returning to the currency conversion page
 
         //Switch-Case statement for the different buttons and actions to be carried out
         switch(view.getId()){

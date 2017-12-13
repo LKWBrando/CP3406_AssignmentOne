@@ -60,7 +60,7 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
     False appends the preferences values to reflect changes in the converting currency type
     Boolean variable settingsOptionStatus is used to determine if activity was started from SettingsActivity; True = yes, False = no*/
     public void onButtonPress(View view){
-        Intent returnToCurrencyConverter = new Intent(this, ConvertCurrency.class);
+        Intent returnToCurrencyConverter = new Intent(this, ConvertCurrencyActivity.class);
         Intent returnToSettings = new Intent(this, SettingsActivity.class);
         switch(view.getId()){
             case (R.id.audButton):
