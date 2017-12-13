@@ -31,8 +31,8 @@
     </style>
 
     <style name="FunTheme" parent="Theme.AppCompat.Light.DarkActionBar" >
-        <item name="android:colorBackground">@color/awesomeGreen</item>
-        <item name="colorPrimary">@color/hotPink</item>
+        <item name="android:colorBackground">@color/hotPink</item>
+        <item name="colorPrimary">@color/awesomeGreen</item>
         <item name="colorPrimaryDark">@color/whackyPurple</item>
         <item name="colorAccent">@color/crazyOrange</item>
         <item name="android:textColor">@color/blindingYellow</item>
