@@ -39,5 +39,8 @@ public class MainActivity extends AppCompatActivity {
         else if(prefTheme.equals("NightMode")){
             setTheme(R.style.NightMode);
         }
+        else{
+            setTheme(R.style.FunTheme);
+        }
     }
 }

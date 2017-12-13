@@ -6,6 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/textBlack</item>
+        <item name="android:textColorSecondary">@color/textBlack</item>
+        <item name="android:textColorSecondaryInverse">@color/textBlack</item>
+        <item name="android:textColorPrimaryInverse">@color/textBlack</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -19,13 +23,23 @@
 
     <style name="NightMode" parent="Theme.AppCompat.Light.DarkActionBar" >
         <item name="android:colorBackground">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@color/text_color_primary</item>
-        <item name="android:textColorSecondary">@color/text_color_secondary</item>
-        <item name="android:textColorSecondaryInverse">@color/secondary_text_material_dark</item>
-        <item name="android:textColorPrimaryInverse">@color/primary_text_material_dark</item>
+        <item name="android:textColor">@color/primary_material_dark</item>
+        <item name="android:textColorPrimary">@color/primary_material_dark</item>
+        <item name="android:textColorSecondary">@color/primary_material_dark</item>
+        <item name="android:textColorSecondaryInverse">@color/primary_material_dark</item>
+        <item name="android:textColorPrimaryInverse">@color/primary_material_dark</item>
     </style>
 
     <style name="FunTheme" parent="Theme.AppCompat.Light.DarkActionBar" >
+        <item name="android:colorBackground">@color/awesomeGreen</item>
+        <item name="colorPrimary">@color/hotPink</item>
+        <item name="colorPrimaryDark">@color/whackyPurple</item>
+        <item name="colorAccent">@color/crazyOrange</item>
+        <item name="android:textColor">@color/blindingYellow</item>
+        <item name="android:textColorPrimary">@color/blindingYellow</item>
+        <item name="android:textColorSecondary">@color/blindingYellow</item>
+        <item name="android:textColorSecondaryInverse">@color/blindingYellow</item>
+        <item name="android:textColorPrimaryInverse">@color/blindingYellow</item>
     </style>
 
 </resources>

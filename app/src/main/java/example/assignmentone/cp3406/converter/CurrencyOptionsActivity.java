@@ -246,5 +246,8 @@ public class CurrencyOptionsActivity extends AppCompatActivity {
         else if(prefTheme.equals("NightMode")){
             setTheme(R.style.NightMode);
         }
+        else{
+            setTheme(R.style.FunTheme);
+        }
     }
 }
